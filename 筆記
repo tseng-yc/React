@@ -1,0 +1,43 @@
+解構賦值
+const arr =[1,2]
+let a = arr[0]
+let b = aee[1]   ->  const [a,b] = arr
+
+props屬性，跟傳資料有關
+
+開發react要先確你應用程式的"狀態"是什麼
+每個元件都是狀態機器
+
+state  v.s.  prop  （都是物件值）
+狀態          屬性
+以文字輸入框為例
+框內的文字     顏色,大小...
+
+＊＊強硬規則
+1.自訂元件，開頭英文要是大寫
+2.JSX回傳只能有一個跟元素
+3.setState()是唯一可更動state的方法(class)
+        ＾
+  從句子中得到的setXXX方法(function)
+  (useState)
+4.setState(setXXX)執行異步（晚）
+
+
+
+JSX語法
+
+＊＊（表單）
+可控元件（給react控制）vs不可控元件（由開發指自己控制）
+表單元素react有有建議開發者一開始用可控
+1.value需要一的對應的state值
+2.onChange(更動事件)需要對應到setState方法修改(或是函式型元件的setXXX方法)
+3.注意：textarea寫法和原本的HTML不太一樣
+  <textarea value={this.state.value} onChange={this.handleChange} />
+
+＊＊生命週期方法
+Did(已經) -componenetDidMount 最重要！是react用來介接其他函式庫。
+          -componenetDidUpdate 保證了setState（有異步執行的特色）已經完成了，也就是元件已經更新了。當你需要已經更動後的值你只能在componenetDidUpdate裡面做。
+
+Will(將) -componenetWillUnmount
+
+componenetDidMount跟componenetWillUnmount通常是成對的
