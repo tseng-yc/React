@@ -41,3 +41,5 @@ Did(已經) -componenetDidMount 最重要！是react用來介接其他函式庫�
 Will(將) -componenetWillUnmount
 
 componenetDidMount跟componenetWillUnmount通常是成對的
+
+key跟ref不屬於props這個物件，不是用來傳遞資料給子元件
