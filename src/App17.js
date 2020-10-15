@@ -1,4 +1,4 @@
-//2020-10-15  2.2.react-bootstrap與react-icons範例
+//2020-10-15  2.react-bootstrap與react-icons範例
 import React, { useState } from 'react';
 import { Container, Row, Col, Button, Modal } from 'react-bootstrap';
 import { SiFacebook } from 'react-icons/si';
