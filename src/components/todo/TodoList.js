@@ -1,7 +1,7 @@
 import React from 'react';
 import TodoItem from './TodoItem';
 import TodoItemEditForm from './TodoItemEditForm';
-
+import QueueAnim from 'rc-queue-anim';
 function TodoList(props) {
   // 解構賦值的語法，先把要用的變數值從props解出來
   const {
@@ -14,7 +14,7 @@ function TodoList(props) {
   } = props;
   return (
     <>
-      <ul>
+      <QueueAnim component="ul" type={['right', 'left']} leaveReverse>
         {/* map使用時通常子元素會要求唯一key值(id值)  */}
         {/* 這裡用索引值作為key值(id值)  */}
         {/* 依照每個項目的completed來控制呈現的樣子  */}
@@ -65,7 +65,7 @@ function TodoList(props) {
               <button onClick={() => handleDelete(item.id)}>刪除</button>
             </li>)*/
         })}
-      </ul>
+      </QueueAnim>
     </>
   );
 }
