@@ -43,3 +43,6 @@ Will(將) -componenetWillUnmount
 componenetDidMount跟componenetWillUnmount通常是成對的
 
 key跟ref不屬於props這個物件，不是用來傳遞資料給子元件
+
+HOC(hight order component)高階元件->Hooks
+這些都是在擴充原本元件功能用的
