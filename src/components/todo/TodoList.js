@@ -10,6 +10,7 @@ function TodoList(props) {
     handleDelete,
     handleEditedToggle,
     handleEditedSave,
+    viewFilter,
   } = props;
   return (
     <>
@@ -22,25 +23,26 @@ function TodoList(props) {
           return <li key={index}>{value}</li>;
         })} */}
 
-        {todos.map(
-          (item, index) =>
-            item.edited ? (
-              <TodoItemEditForm
-                key={item.id}
-                id={item.id}
-                text={item.text}
-                handleEditedSave={handleEditedSave}
-              />
-            ) : (
-              <TodoItem
-                key={item.id}
-                text={item.text}
-                completed={item.completed}
-                completedMethod={() => handleCompleted(item.id)}
-                deleteMethod={() => handleDelete(item.id)}
-                editedToggleMethod={() => handleEditedToggle(item.id)}
-              />
-            )
+        {todos.map((item, index) => {
+          if (viewFilter === 1 && !item.completed) return <></>;
+          if (viewFilter === 2 && item.completed) return <></>;
+          return item.edited ? (
+            <TodoItemEditForm
+              key={item.id}
+              id={item.id}
+              text={item.text}
+              handleEditedSave={handleEditedSave}
+            />
+          ) : (
+            <TodoItem
+              key={item.id}
+              text={item.text}
+              completed={item.completed}
+              completedMethod={() => handleCompleted(item.id)}
+              deleteMethod={() => handleDelete(item.id)}
+              editedToggleMethod={() => handleEditedToggle(item.id)}
+            />
+          );
 
           /* item.completed ? (
             <li key={item.text}>
@@ -62,7 +64,7 @@ function TodoList(props) {
               {item.text}
               <button onClick={() => handleDelete(item.id)}>刪除</button>
             </li>)*/
-        )}
+        })}
       </ul>
     </>
   );

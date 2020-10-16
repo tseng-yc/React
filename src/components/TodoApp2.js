@@ -11,6 +11,18 @@ function TodoApp2(props) {
     { id: 2, text: '學好react', completed: true, edited: false },
   ]);
 
+  //0=all,1=(view completed=true),2=(view completed=false)
+  const [viewFilter, setViewFilter] = useState(0);
+
+  //   ????????
+  //   const [completedTodos,setCompletedTodos] =  useState([])
+  //   const [uncompletedTodos,setUnompletedTodos] =  useState([])
+
+  //   const handleCompletedTodos = (id) =>{
+  //       const newTodos = [...todos];
+  //       const
+  //   }
+
   // 利用id值尋找對應的item的索引值，然後改變completed值
   const handleCompleted = (id) => {
     // 先複製一個新的todos陣列
@@ -128,6 +140,10 @@ function TodoApp2(props) {
         }}
       /> */}
       <hr />
+      <button onClick={() => setViewFilter(0)}>全部項目</button>
+      <button onClick={() => setViewFilter(1)}>完成的項目</button>
+      <button onClick={() => setViewFilter(2)}>未完成的項目</button>
+      <hr />
 
       <TodoList
         handleEditedToggle={handleEditedToggle}
@@ -135,6 +151,7 @@ function TodoApp2(props) {
         handleCompleted={handleCompleted}
         handleDelete={handleDelete}
         handleEditedSave={handleEditedSave}
+        viewFilter={viewFilter}
       />
       {/* <ul> */}
       {/* map使用時通常子元素會要求唯一key值(id值)  */}
