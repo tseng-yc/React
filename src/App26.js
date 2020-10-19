@@ -11,8 +11,11 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Products from './pages/Products';
 import NotFoundPage from './pages/NotFoundPage';
+import Login from './pages/Login';
+import Register from './pages/Register';
 
 function App26() {
+  const [isAuth, setIsAuth] = useState(false);
   return (
     <Router>
       <>
@@ -25,6 +28,12 @@ function App26() {
             <Route exact path="/">
               <Home />
             </Route>
+            <Route path="/login">
+              <Login isAuth={isAuth} setIsAuth={setIsAuth} />
+            </Route>
+            <Route path="/Register">
+              <Register />
+            </Route>
             <Route path="/todo">
               <TodoAppPage />
             </Route>
@@ -32,7 +41,7 @@ function App26() {
               <About />
             </Route>
             <Route path="/product/:id?">
-              <Products />
+              <Products isAuth={isAuth} setIsAuth={setIsAuth} />
             </Route>
             {/* 404找不到網頁，需要放在switch路由表最後一個 */}
             <Route path="*">
