@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, Switch } from 'react-router-dom';
+import { Link, Switch, withRouter } from 'react-router-dom';
 
 function Home(props) {
   return (
@@ -12,4 +12,5 @@ function Home(props) {
   );
 }
 
-export default Home;
+export default withRouter(Home);
+//withRouter:元件導出時幫你擴充三個屬性history,location,match

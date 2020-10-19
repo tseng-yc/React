@@ -30,7 +30,7 @@ function App26() {
             <Route path="/about">
               <About />
             </Route>
-            <Route path="/product">
+            <Route path="/product/:id?">
               <Products />
             </Route>
           </Switch>

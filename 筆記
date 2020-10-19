@@ -44,5 +44,14 @@ componenetDidMount跟componenetWillUnmount通常是成對的
 
 key跟ref不屬於props這個物件，不是用來傳遞資料給子元件
 
-HOC(hight order component)高階元件->Hooks
+HOC(hight order component)高階元件->到2019年才有的勾子Hooks（設計給函式型元件用的）
 這些都是在擴充原本元件功能用的
+
+hight-order-component
+
+withRouter:元件導出時幫你擴充三個屬性history,location,match
+match：主要得到不同路徑的參數值，網址上的參數
+history：對於瀏覽器書籤，前後移動的處理方法
+location：目前所在的位置（物件值）
+
+
