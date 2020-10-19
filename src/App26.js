@@ -10,6 +10,7 @@ import TodoAppPage from './pages/TodoAppPage';
 import Home from './pages/Home';
 import About from './pages/About';
 import Products from './pages/Products';
+import NotFoundPage from './pages/NotFoundPage';
 
 function App26() {
   return (
@@ -32,6 +33,10 @@ function App26() {
             </Route>
             <Route path="/product/:id?">
               <Products />
+            </Route>
+            {/* 404找不到網頁，需要放在switch路由表最後一個 */}
+            <Route path="*">
+              <NotFoundPage />
             </Route>
           </Switch>
         </MainContent>
