@@ -13,9 +13,12 @@ import Products from './pages/Products';
 import NotFoundPage from './pages/NotFoundPage';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import Profile from './pages/Profile';
 
 function App26() {
+  //控制是否登入
   const [isAuth, setIsAuth] = useState(false);
+
   return (
     <Router>
       <>
@@ -33,6 +36,9 @@ function App26() {
             </Route>
             <Route path="/Register">
               <Register />
+            </Route>
+            <Route path="/profile">
+              <Profile isAuth={isAuth} setIsAuth={setIsAuth} />
             </Route>
             <Route path="/todo">
               <TodoAppPage />

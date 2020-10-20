@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, Switch, withRouter } from 'react-router-dom';
 
 function Home(props) {
+  console.log(props);
   return (
     <>
       <h1>Home</h1>

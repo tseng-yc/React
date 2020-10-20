@@ -21,6 +21,41 @@ function Login(props) {
       >
         登出
       </button>
+
+      <div className="container">
+        <form>
+          <div className="form-group">
+            <label htmlFor="exampleInputEmail1">帳號</label>
+            <input
+              type="text"
+              className="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="exampleInputPassword1">密碼</label>
+            <input
+              type="password"
+              className="form-control"
+              id="exampleInputPassword1"
+            />
+          </div>
+          <div className="form-group form-check">
+            <input
+              type="checkbox"
+              className="form-check-input"
+              id="exampleCheck1"
+            />
+            <label className="form-check-label" htmlFor="exampleCheck1">
+              記得我
+            </label>
+          </div>
+          <button type="button" className="btn btn-primary">
+            登入
+          </button>
+        </form>
+      </div>
     </>
   );
 }
