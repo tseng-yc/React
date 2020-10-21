@@ -1,12 +1,53 @@
+//2020-10-20 React-Redux綁定用最上層元件
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.scss';
-import App27 from './App27';
+import App29 from './App29';
 import * as serviceWorker from './serviceWorker';
+//第一步匯入createStore,combineReducers API
+import { createStore, combineReducers } from 'redux';
+//combineReducers這個不會入的話時光旅除錯會無法除錯
+
+import { Provider } from 'react-redux';
+
+//第二步，寫出reducer
+//給定目前的狀態跟動作，回傳一個新的狀態
+//action={type: 'ADD_VALUE",value:1}
+//action={type: 'MINUS_VALUE",value:1}
+function counter(state = 99, action) {
+  switch (action.type) {
+    case 'ADD_VALUE':
+      return state + action.value;
+    case 'MINUS_VALUE':
+      return state - action.value;
+    default:
+      return state;
+  }
+}
+
+//action={type: 'ADD_VALUE",item:{id,text,comleted,edited}}
+// function todos(state = [], action) {
+//   return state;
+// }
+//reducer要先寫出來再建立store
+
+//第二之一：合併所有的reducers成一個大的reducer
+const rootReducer = combineReducers({
+  counter,
+});
+
+//第三步：由rootReducer建立store
+const store = createStore(
+  rootReducer /*preloadedState,*/,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 
 ReactDOM.render(
   <React.StrictMode>
-    <App27 />
+    {/* 最上層的react與redux綁定用的元件，屬性即為上面建立的store */}
+    <Provider store={store}>
+      <App29 />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
