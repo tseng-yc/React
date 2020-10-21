@@ -11,19 +11,21 @@ import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 
 //第二步，寫出reducer
+import { rootReducer } from './reducers';
+
 //給定目前的狀態跟動作，回傳一個新的狀態
 //action={type: 'ADD_VALUE",value:1}
 //action={type: 'MINUS_VALUE",value:1}
-function counter(state = 99, action) {
-  switch (action.type) {
-    case 'ADD_VALUE':
-      return state + action.value;
-    case 'MINUS_VALUE':
-      return state - action.value;
-    default:
-      return state;
-  }
-}
+// function counter(state = 99, action) {
+//   switch (action.type) {
+//     case 'ADD_VALUE':
+//       return state + action.value;
+//     case 'MINUS_VALUE':
+//       return state - action.value;
+//     default:
+//       return state;
+//   }
+// }
 
 //action={type: 'ADD_VALUE",item:{id,text,comleted,edited}}
 // function todos(state = [], action) {
@@ -32,13 +34,13 @@ function counter(state = 99, action) {
 //reducer要先寫出來再建立store
 
 //第二之一：合併所有的reducers成一個大的reducer
-const rootReducer = combineReducers({
-  counter,
-});
+// const rootReducer = combineReducers({
+//   counter,
+// });
 
 //第三步：由rootReducer建立store
 const store = createStore(
-  rootReducer /*preloadedState,*/,
+  rootReducer /* preloadedState, */,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
