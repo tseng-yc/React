@@ -5,8 +5,11 @@ import './index.scss';
 import App29 from './App29';
 import * as serviceWorker from './serviceWorker';
 //第一步匯入createStore,combineReducers API
-import { createStore, combineReducers } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 //combineReducers這個不會入的話時光旅除錯會無法除錯
+
+// 導入redux-thunk中介軟體
+import thunk from 'redux-thunk';
 
 import { Provider } from 'react-redux';
 
@@ -39,9 +42,16 @@ import { rootReducer } from './reducers';
 // });
 
 //第三步：由rootReducer建立store
+// const store = createStore(
+//   rootReducer /* preloadedState, */,
+//   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+// );
+
+// 在建立store時要加入中介軟體
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(
-  rootReducer /* preloadedState, */,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  rootReducer,
+  /* preloadedState, */ composeEnhancers(applyMiddleware(thunk))
 );
 
 ReactDOM.render(

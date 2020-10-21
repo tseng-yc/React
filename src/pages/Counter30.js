@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 // 改用動作類型的常數
 // import { ADD_VALUE, MINUS_VALUE } from '../actions/actionTypes';
 // 導入actions/index.js中，這個元件只需要一部份的action creators
-import { addValue, minusValue } from '../actions/index';
+import { addValue, minusValue, addValueAsync } from '../actions/index';
 
 function Counter30(props) {
   console.log('props', props);
@@ -23,6 +23,7 @@ function Counter30(props) {
 
       {/* 注意：執行綁定的動作建立器時，Redux會協助自動dispatch */}
       <button onClick={() => props.addValue(1)}>+1</button>
+      <button onClick={() => props.addValueAsync(1)}>+1(兩秒後)</button>
       <button onClick={() => props.minusValue(1)}>-1</button>
     </>
   );
@@ -39,4 +40,8 @@ const mapStateToProps = (store) => {
 
 // 綁定部份action creators
 // 注意：第二個傳入參數` { addValue, minusValue }`是個物件值
-export default connect(mapStateToProps, { addValue, minusValue })(Counter30);
+export default connect(mapStateToProps, {
+  addValue,
+  minusValue,
+  addValueAsync,
+})(Counter30);
